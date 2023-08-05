@@ -30,7 +30,7 @@ orbit_velocity_max = 0.0
 scale_curve = SubResource("CurveTexture_8ll0p")
 color_ramp = SubResource("GradientTexture1D_mfjhi")
 
-[node name="Ball" type="CharacterBody2D"]
+[node name="Ball" type="CharacterBody2D" groups=["ball"]]
 collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_hshrd")
@@ -44,7 +44,7 @@ region_rect = Rect2(84, 136, 8, 8)
 visible = false
 shape = SubResource("CircleShape2D_74vx2")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="TrailParticles" type="GPUParticles2D" parent="."]
 show_behind_parent = true
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_2b8we")

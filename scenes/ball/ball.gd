@@ -3,12 +3,36 @@ class_name Ball
 
 @export var speed = 200
 
+@onready var trail_particles: GPUParticles2D = $TrailParticles
+
+var idle := true
+
 
 func _ready() -> void:
-	velocity = Vector2.DOWN * speed
+	trail_particles.emitting = false
+	_attach_to_paddle()
+
+
+func _attach_to_paddle() -> void:
+	var paddle = get_tree().get_first_node_in_group("paddle")
+	if paddle:
+		global_position = paddle.global_position + Vector2.UP * 12
+
+
+func _handle_idle() -> void:
+	if Input.is_action_just_pressed("start"):
+		idle = false
+		velocity = Vector2.UP * speed
+		trail_particles.emitting = true
+	else:
+		_attach_to_paddle()
 
 
 func _physics_process(delta: float) -> void:
+	if idle:
+		_handle_idle()
+		return
+
 	var collision = move_and_collide(velocity * delta)
 	if not collision:
 		return

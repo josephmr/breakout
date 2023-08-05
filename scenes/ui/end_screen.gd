@@ -10,7 +10,7 @@ class_name EndScreen
 
 
 func _ready() -> void:
-	get_tree().paused = true
+	_pause()
 	if not success:
 		title_label.text = "You Lost! :("
 		continue_button.text = "Retry"
@@ -19,12 +19,24 @@ func _ready() -> void:
 	quit_button.pressed.connect(_on_quit_button_pressed)
 
 
+func _pause(state: bool = true) -> void:
+	get_tree().paused = state
+
+
+func _resume() -> void:
+	_pause(false)
+
+
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 
 func _on_continue_button_pressed() -> void:
-	pass
+	if success:
+		pass
+	else:
+		_resume()
+		get_tree().reload_current_scene()
 
 
 func _on_level_select_button_pressed() -> void:

@@ -24,15 +24,14 @@ life_manager = NodePath("LifeManager")
 end_screen_scene = ExtResource("2_diynn")
 
 [node name="LifeManager" parent="." instance=ExtResource("3_mk2u0")]
+max_lives = 2
+ball_scene = ExtResource("2_tm6jx")
 
 [node name="LifeUI" parent="." node_paths=PackedStringArray("life_manager") instance=ExtResource("2_ggxqx")]
 life_manager = NodePath("../LifeManager")
 
-[node name="Paddle" parent="." instance=ExtResource("1_1avrp")]
+[node name="Paddle" parent="." groups=["paddle"] instance=ExtResource("1_1avrp")]
 position = Vector2(320, 362)
-
-[node name="Ball" parent="." instance=ExtResource("2_tm6jx")]
-position = Vector2(320, 304)
 
 [node name="DeathZone" parent="." instance=ExtResource("3_t2cg6")]
 position = Vector2(0, 400)
