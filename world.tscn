@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://ookeuiqokxa"]
+
+[ext_resource type="PackedScene" uid="uid://cwvkc3350oy07" path="res://scenes/paddle/paddle.tscn" id="1_8wihd"]
+[ext_resource type="PackedScene" uid="uid://doy5karnglu6i" path="res://scenes/ball/ball.tscn" id="2_t2ggf"]
+[ext_resource type="PackedScene" uid="uid://doqowhir3jnrn" path="res://scenes/bricks/bricks.tscn" id="3_6hdc5"]
+[ext_resource type="Script" path="res://scenes/death_zone/death_zone.gd" id="4_sddvr"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vw2bf"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hjk6j"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mm4ln"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wqhy8"]
+
+[node name="World" type="Node2D"]
+
+[node name="Paddle" parent="." instance=ExtResource("1_8wihd")]
+position = Vector2(320, 362)
+
+[node name="Ball" parent="." instance=ExtResource("2_t2ggf")]
+position = Vector2(320, 304)
+
+[node name="Bricks" parent="." instance=ExtResource("3_6hdc5")]
+position = Vector2(-16, 0)
+layer_0/tile_data = PackedInt32Array(262150, 0, 0, 327686, 0, 0, 393222, 0, 0, 458758, 0, 0, 524294, 0, 0, 589830, 0, 0, 655366, 0, 0, 720902, 0, 0, 262151, 0, 0, 327687, 0, 0, 393223, 0, 0, 458759, 0, 0, 524295, 0, 0, 589831, 0, 0, 655367, 0, 0, 720903, 0, 0, 262152, 0, 0, 327688, 0, 0, 393224, 0, 0, 458760, 0, 0, 524296, 0, 0, 589832, 0, 0, 655368, 0, 0, 720904, 0, 0, 262153, 0, 0, 327689, 0, 0, 393225, 0, 0, 458761, 0, 0, 524297, 0, 0, 589833, 0, 0, 655369, 0, 0, 720905, 0, 0, 262154, 0, 0, 327690, 0, 0, 393226, 0, 0, 458762, 0, 0, 524298, 0, 0, 589834, 0, 0, 655370, 0, 0, 720906, 0, 0, 262155, 0, 0, 327691, 0, 0, 393227, 0, 0, 458763, 0, 0, 524299, 0, 0, 589835, 0, 0, 655371, 0, 0, 720907, 0, 0, 262156, 0, 0, 327692, 0, 0, 393228, 0, 0, 458764, 0, 0, 524300, 0, 0, 589836, 0, 0, 655372, 0, 0, 720908, 0, 0, 262157, 0, 0, 327693, 0, 0, 393229, 0, 0, 458765, 0, 0, 524301, 0, 0, 589837, 0, 0, 655373, 0, 0, 720909, 0, 0, 262158, 0, 0, 327694, 0, 0, 393230, 0, 0, 458766, 0, 0, 524302, 0, 0, 589838, 0, 0, 655374, 0, 0, 720910, 0, 0)
+
+[node name="Boundaries" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Left" type="CollisionShape2D" parent="Boundaries"]
+shape = SubResource("WorldBoundaryShape2D_vw2bf")
+
+[node name="Top" type="CollisionShape2D" parent="Boundaries"]
+shape = SubResource("WorldBoundaryShape2D_hjk6j")
+
+[node name="Right" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(640, 0)
+shape = SubResource("WorldBoundaryShape2D_mm4ln")
+
+[node name="DeathZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("4_sddvr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(0, 400)
+shape = SubResource("WorldBoundaryShape2D_wqhy8")

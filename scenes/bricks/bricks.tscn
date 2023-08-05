@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://doqowhir3jnrn"]
+
+[ext_resource type="PackedScene" uid="uid://cqjatqmnfx5ho" path="res://scenes/bricks/brick.tscn" id="1_4tj46"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_rg72a"]
+scenes/0/scene = ExtResource("1_4tj46")
+
+[sub_resource type="TileSet" id="TileSet_fkpn7"]
+tile_size = Vector2i(32, 16)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
+custom_data_layer_0/name = "hits"
+custom_data_layer_0/type = 2
+sources/0 = SubResource("TileSetScenesCollectionSource_rg72a")
+
+[node name="Bricks" type="TileMap"]
+tile_set = SubResource("TileSet_fkpn7")
+format = 2
+layer_0/name = "base"

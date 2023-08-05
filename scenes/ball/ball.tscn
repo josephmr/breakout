@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://doy5karnglu6i"]
+
+[ext_resource type="Script" path="res://scenes/ball/ball.gd" id="1_hshrd"]
+[ext_resource type="Texture2D" uid="uid://dqqwrci3ukf0t" path="res://breakout_pieces.png" id="1_lktnh"]
+[ext_resource type="Texture2D" uid="uid://s74oplwxgug8" path="res://scenes/ball/ball_trail.png" id="3_j6ni4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_74vx2"]
+radius = 4.0
+
+[sub_resource type="Gradient" id="Gradient_x7nu2"]
+colors = PackedColorArray(0.984314, 0.94902, 0.211765, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mfjhi"]
+gradient = SubResource("Gradient_x7nu2")
+
+[sub_resource type="Curve" id="Curve_26j23"]
+_data = [Vector2(0, 0.905263), 0.0, -0.201238, 0, 0, Vector2(1, 0.231579), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8ll0p"]
+curve = SubResource("Curve_26j23")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2b8we"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_curve = SubResource("CurveTexture_8ll0p")
+color_ramp = SubResource("GradientTexture1D_mfjhi")
+
+[node name="Ball" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_hshrd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lktnh")
+region_enabled = true
+region_rect = Rect2(84, 136, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_74vx2")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_2b8we")
+texture = ExtResource("3_j6ni4")
+lifetime = 0.6
+speed_scale = 5.0
+fixed_fps = 0
+interpolate = false
