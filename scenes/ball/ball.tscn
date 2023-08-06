@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://doy5karnglu6i"]
+[gd_scene load_steps=13 format=3 uid="uid://doy5karnglu6i"]
 
 [ext_resource type="Script" path="res://scenes/ball/ball.gd" id="1_hshrd"]
 [ext_resource type="Texture2D" uid="uid://dqqwrci3ukf0t" path="res://breakout_pieces.png" id="1_lktnh"]
 [ext_resource type="Texture2D" uid="uid://s74oplwxgug8" path="res://scenes/ball/ball_trail.png" id="3_j6ni4"]
+[ext_resource type="AudioStream" uid="uid://bpwhw2bujxdfs" path="res://sounds/paddle_bounce.wav" id="4_nk532"]
+[ext_resource type="AudioStream" uid="uid://bbg8x4kpnmrnd" path="res://sounds/brick_bounce.wav" id="5_4qtr8"]
+[ext_resource type="AudioStream" uid="uid://bny73tpwsyc84" path="res://sounds/world_bounce.wav" id="6_onqas"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_74vx2"]
 radius = 4.0
@@ -33,6 +36,7 @@ color_ramp = SubResource("GradientTexture1D_mfjhi")
 [node name="Ball" type="CharacterBody2D" groups=["ball"]]
 collision_layer = 8
 collision_mask = 7
+motion_mode = 1
 script = ExtResource("1_hshrd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -53,3 +57,15 @@ lifetime = 0.6
 speed_scale = 5.0
 fixed_fps = 0
 interpolate = false
+
+[node name="PaddleStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nk532")
+volume_db = -12.0
+
+[node name="BrickStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4qtr8")
+volume_db = -12.0
+
+[node name="WorldStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_onqas")
+volume_db = -12.0

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxlp6d4wyfv3q"]
+
+[ext_resource type="PackedScene" uid="uid://dpqk0gcs3bhn0" path="res://scenes/level/level.tscn" id="1_cji1w"]
+
+[node name="Level3" instance=ExtResource("1_cji1w")]
+
+[node name="Bricks" parent="." index="5"]
+layer_0/tile_data = PackedInt32Array(393226, 0, 131072, 458762, 0, 131072, 524298, 0, 131072, 589833, 0, 131072, 655368, 0, 131072, 589831, 0, 131072, 524294, 0, 131072, 393222, 0, 131072, 327687, 0, 131072, 393224, 0, 131072, 327689, 0, 131072, 458758, 0, 131072, 393223, 0, 65536, 458759, 0, 65536, 524295, 0, 65536, 524296, 0, 65536, 458760, 0, 65536, 589832, 0, 65536, 524297, 0, 65536, 458761, 0, 65536, 393225, 0, 65536)

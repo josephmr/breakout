@@ -11,12 +11,16 @@ class_name EndScreen
 
 func _ready() -> void:
 	_pause()
-	if not success:
-		title_label.text = "You Lost! :("
-		continue_button.text = "Retry"
 	continue_button.pressed.connect(_on_continue_button_pressed)
 	level_select_button.pressed.connect(_on_level_select_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
+
+	if not success:
+		title_label.text = "You Lost! :("
+		continue_button.text = "Retry"
+	else:
+		if not LevelManager.has_next_level():
+			continue_button.queue_free()
 
 
 func _pause(state: bool = true) -> void:
@@ -32,10 +36,10 @@ func _on_quit_button_pressed() -> void:
 
 
 func _on_continue_button_pressed() -> void:
-	if success:
-		pass
+	_resume()
+	if success and LevelManager.has_next_level():
+		LevelManager.change_to_next_level()
 	else:
-		_resume()
 		get_tree().reload_current_scene()
 
 

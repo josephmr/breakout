@@ -8,6 +8,7 @@ signal game_over
 @export var ball_scene: PackedScene
 
 @onready var current_lives = max_lives
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -26,6 +27,8 @@ func _on_life_lost() -> void:
 
 	current_lives -= 1
 	lives_changed.emit(current_lives, max_lives)
+	audio_stream_player.play()
+	await audio_stream_player.finished
 	if current_lives == 0:
 		game_over.emit()
 	else:

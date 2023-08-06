@@ -2,6 +2,7 @@ extends StaticBody2D
 class_name Brick
 
 @export_range(1, 10) var hits: int = 1
+@export var cracks: CompressedTexture2D
 @onready var _hits: int = 0
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -16,6 +17,7 @@ func _ready() -> void:
 			sprite_2d_material.set_shader_parameter(
 				"region_rect", Vector4(rect.position.x, rect.position.y, rect.size.x, rect.size.y)
 			)
+			sprite_2d_material.set_shader_parameter("cracks", cracks)
 
 
 func hit() -> void:

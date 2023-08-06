@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://3bh33v1kwmje"]
+
+[ext_resource type="PackedScene" uid="uid://cqjatqmnfx5ho" path="res://scenes/bricks/brick.tscn" id="1_8cwlg"]
+[ext_resource type="Shader" path="res://scenes/bricks/brick.gdshader" id="2_cmcx7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdk6a"]
+resource_local_to_scene = true
+shader = ExtResource("2_cmcx7")
+shader_parameter/hits = null
+shader_parameter/region_rect = null
+shader_parameter/region = false
+
+[node name="Brick" instance=ExtResource("1_8cwlg")]
+hits = 2
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_wdk6a")
+region_rect = Rect2(8, 28, 32, 16)

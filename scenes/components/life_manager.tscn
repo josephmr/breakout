@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl6ombu6hgb3l"]
+[gd_scene load_steps=3 format=3 uid="uid://cl6ombu6hgb3l"]
 
 [ext_resource type="Script" path="res://scenes/components/life_manager.gd" id="1_o3oa4"]
+[ext_resource type="AudioStream" uid="uid://nxfy3ap8nmsm" path="res://sounds/life_lost.wav" id="2_fakmc"]
 
 [node name="LifeManager" type="Node"]
 script = ExtResource("1_o3oa4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fakmc")

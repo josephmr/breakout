@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dpqk0gcs3bhn0"]
+[gd_scene load_steps=13 format=3 uid="uid://dpqk0gcs3bhn0"]
 
 [ext_resource type="PackedScene" uid="uid://cwvkc3350oy07" path="res://scenes/paddle/paddle.tscn" id="1_1avrp"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_7sms7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cl6ombu6hgb3l" path="res://scenes/components/life_manager.tscn" id="3_mk2u0"]
 [ext_resource type="PackedScene" uid="uid://crgcqeyx5xah4" path="res://scenes/death_zone/death_zone.tscn" id="3_t2cg6"]
 [ext_resource type="PackedScene" uid="uid://doqowhir3jnrn" path="res://scenes/bricks/bricks.tscn" id="4_ikifg"]
+[ext_resource type="Texture2D" uid="uid://cikn0sisktifx" path="res://background.png" id="5_ldon1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fs30g"]
 normal = Vector2(1, 0)
@@ -27,14 +28,18 @@ end_screen_scene = ExtResource("2_diynn")
 max_lives = 2
 ball_scene = ExtResource("2_tm6jx")
 
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("5_ldon1")
+centered = false
+
 [node name="LifeUI" parent="." node_paths=PackedStringArray("life_manager") instance=ExtResource("2_ggxqx")]
 life_manager = NodePath("../LifeManager")
 
 [node name="Paddle" parent="." groups=["paddle"] instance=ExtResource("1_1avrp")]
-position = Vector2(320, 362)
+position = Vector2(256, 298)
 
 [node name="DeathZone" parent="." instance=ExtResource("3_t2cg6")]
-position = Vector2(0, 400)
+position = Vector2(0, 320)
 
 [node name="Bricks" parent="." instance=ExtResource("4_ikifg")]
 position = Vector2(-16, 0)
@@ -49,5 +54,5 @@ shape = SubResource("WorldBoundaryShape2D_fs30g")
 shape = SubResource("WorldBoundaryShape2D_66wj0")
 
 [node name="Right" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(640, 0)
+position = Vector2(512, 0)
 shape = SubResource("WorldBoundaryShape2D_nepeq")

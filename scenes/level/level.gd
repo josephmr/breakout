@@ -24,5 +24,5 @@ func _on_life_manager_game_over() -> void:
 
 func _on_brick_destroyed() -> void:
 	total_bricks -= 1
-	if total_bricks == 0:
-		_show_end_screen()
+	# if total_bricks == 0:
+	_show_end_screen()

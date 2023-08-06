@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://iyfjkrq0pht5"]
+
+[ext_resource type="PackedScene" uid="uid://cqjatqmnfx5ho" path="res://scenes/bricks/brick.tscn" id="1_r80rl"]
+[ext_resource type="Shader" path="res://scenes/bricks/brick.gdshader" id="2_irgja"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8rdkl"]
+resource_local_to_scene = true
+shader = ExtResource("2_irgja")
+shader_parameter/hits = null
+shader_parameter/region_rect = null
+shader_parameter/region = false
+
+[node name="BlueBrick" instance=ExtResource("1_r80rl")]
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_8rdkl")
